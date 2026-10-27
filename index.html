@@ -103,6 +103,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .h4-lock{display:flex;align-items:flex-end;gap:clamp(16px,2vw,30px);margin:6px 0 4px}
 .h4-ar{position:relative;display:inline-flex;direction:rtl;flex-direction:row;margin-bottom:.12em;font-weight:200;font-size:clamp(130px,15vw,250px);line-height:.95;color:var(--ink)}
 .h4-ar .ra{position:relative}
+.ctry{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:4px}
+.ctry span{font-size:13px;color:var(--muted);margin-left:4px}
+.ctry button{font-family:var(--sans);font-size:14px;display:inline-flex;align-items:center;gap:7px;padding:7px 14px 7px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:all .2s}
+.ctry button i{font-style:normal;font-size:16px;line-height:1}
+.ctry button:hover{border-color:var(--champ);background:var(--champ-pale);transform:translateY(-1px)}
+.h4-ar .ra{position:relative;display:inline-block}
+.logo .a .ra{position:relative;display:inline-block}
+.zdot.sm{width:.19em;height:.19em;top:.2em;right:.1em;animation:none}
 .zdot{position:absolute;width:.13em;height:.13em;border-radius:50%;background:radial-gradient(circle at 35% 35%,#E3C88E,#A9874B 60%,#7E6131);top:var(--zt,.3em);right:var(--zr,.02em);animation:dotdrop 1.3s cubic-bezier(.3,1.4,.5,1) .2s both}
 @keyframes dotdrop{0%{transform:translateY(-1.1em) scale(.6)}60%{transform:translateY(.04em) scale(1.05,.92)}100%{transform:none}}
 .h4-lat{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-family:var(--display);font-weight:500;font-size:clamp(28px,3vw,44px);letter-spacing:.22em;direction:ltr;padding-bottom:.6em;background:linear-gradient(100deg,#C9AE7A,#8E6D38 60%,#B99A60);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -404,7 +412,7 @@ footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;bo
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="ZAYY زي"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#zmark"/></svg><span class="w">ZAYY</span><span class="a">زي</span></a>
+    <a class="logo" href="#top" aria-label="ZAYY زي"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#zmark"/></svg><span class="w">ZAYY</span><span class="a"><span class="ra">ري<i class="zdot sm"></i></span></span></a>
     <nav class="nav-links" aria-label="أقسام الموقع"><a href="#fold">قبل وبعد</a><a href="#collection">الأقسام</a><a href="#process">كيف نشتغل</a><a href="#pricing">الباقات</a><a href="#faq">أسئلة</a></nav>
     <a class="btn btn-champ" href="#start">ابدأ طلبك</a>
   </div>
@@ -420,14 +428,15 @@ footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;bo
       <figure class="p5" data-speed="-0.03"><img src="img/k-girl.jpg" alt="فستان عيد للأطفال"></figure>
     </div>
     <div class="h4-txt">
-      <div class="h4-meta"><span class="it">Issue 01 — The AI Atelier</span><span class="lat">KW · SA · AE · QA · OM</span></div>
+      <div class="h4-meta"><span class="it">Issue 01 — The AI Atelier</span></div>
       <div class="h4-lock" id="mast" aria-label="ZAYY زي">
-        <span class="h4-ar" aria-hidden="true"><span class="ra">ر<i class="zdot"></i></span><span>ي</span></span>
+        <span class="h4-ar" aria-hidden="true"><span class="ra">ري<i class="zdot"></i></span></span>
         <span class="h4-lat" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#zmark"/></svg>ZAYY</span>
       </div>
-      <h1>زيّك، <em>بأي</em> <span class="u">عالم.</span></h1>
+      <h1>زيّك، بأيّ <span class="u">عالم.</span></h1>
       <p class="muted">صورة من جوالك، ونردّها لك صور متجر وحملة كاملة. القطعة تطلع كما هي، بدون ستوديو وبدون موديل.</p>
       <div class="h4-cta"><a class="btn btn-champ" href="#start">ابدأ طلبك على واتساب</a><a class="btn btn-line" href="#pricing">الباقات</a></div>
+      <div class="ctry" role="group" aria-label="الأسعار حسب البلد"><span>أسعارنا بعملة بلدك:</span><button type="button" data-go="KWD"><i>🇰🇼</i>الكويت</button><button type="button" data-go="SAR"><i>🇸🇦</i>السعودية</button><button type="button" data-go="AED"><i>🇦🇪</i>الإمارات</button><button type="button" data-go="QAR"><i>🇶🇦</i>قطر</button><button type="button" data-go="OMR"><i>🇴🇲</i>عُمان</button></div>
       <div class="cover-chips"><span>أزياء</span><span>عبايات</span><span>رجالي</span><span>أطفال</span><span>عطور</span><span>أحذية</span><span>شنط</span><span>مجوهرات</span></div>
     </div>
   </section>
@@ -784,6 +793,7 @@ footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;bo
   addEventListener('load',onScroll);
   tick(); if(!RM) loop();
 })();
+document.querySelectorAll('.ctry button').forEach(function(b){b.addEventListener('click',function(){var t=document.querySelector('#cur button[data-c="'+b.getAttribute('data-go')+'"]');if(t)t.click();var p=document.getElementById('pricing');if(p)p.scrollIntoView({behavior:'smooth',block:'start'})})});
 </script>
 
 </body></html>
