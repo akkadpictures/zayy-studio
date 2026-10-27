@@ -118,14 +118,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .h4-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
 .cover-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .cover-chips span{font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.6)}
-.h4-pics{position:relative;order:2;height:100%;min-height:inherit}
-.h4-pics figure{position:absolute;margin:0;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,45,20,.35);will-change:transform;animation:picin 1.1s cubic-bezier(.2,.7,.2,1) both}
-.h4-pics img{width:100%;height:100%;object-fit:cover}
-.h4-pics .p2{inset:8% 30% 10% 26%;z-index:2;animation-delay:.05s}
-.h4-pics .p1{top:4%;left:4%;width:24%;aspect-ratio:3/4;animation-delay:.2s}
-.h4-pics .p3{top:14%;right:4%;width:24%;aspect-ratio:3/4;animation-delay:.3s}
-.h4-pics .p4{bottom:6%;left:9%;width:19%;aspect-ratio:3/4;z-index:3;animation-delay:.4s}
-.h4-pics .p5{bottom:3%;right:9%;width:21%;aspect-ratio:3/4;z-index:3;animation-delay:.5s}
+.h4-pics{position:relative;order:2;height:100%;min-height:inherit;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);gap:clamp(12px,1.4vw,22px);align-items:center;padding:clamp(40px,5vw,80px) clamp(20px,3vw,48px)}
+.h4-pics::before{content:"";position:absolute;left:50%;top:50%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#F3E7D0 0%,rgba(243,231,208,0) 70%);z-index:0}
+.h4-pics figure{position:relative;margin:0;overflow:hidden;border-radius:999px 999px 16px 16px;box-shadow:0 40px 70px -40px rgba(60,45,20,.45);z-index:1;animation:picin 1.1s cubic-bezier(.2,.7,.2,1) both}
+.h4-pics img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.h4-pics .p2{aspect-ratio:3/4.7;animation-delay:.05s}
+.h4-pics .p1{aspect-ratio:3/4.4;margin-top:22%;animation-delay:.2s}
+.h4-pics .p3{aspect-ratio:3/4.4;margin-top:-22%;animation-delay:.3s}
+.h4-pics .p4,.h4-pics .p5{display:none}
+.h4-pics figcaption{position:absolute;inset:auto 0 14px 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5);direction:ltr}
 @keyframes picin{from{clip-path:inset(12% 0 12% 0)}to{clip-path:inset(0 0 0 0)}}
 @media (max-width:860px){
  .hero4{min-height:0;display:flex;flex-direction:column;align-items:stretch}
@@ -137,7 +138,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
  .hero4 p{font-size:15px}
  .cover-chips{display:none}
  .h4-pics{order:1;height:auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) minmax(0,1fr);gap:6px;padding:14px max(20px,env(safe-area-inset-left,0px)) 0}
- .h4-pics figure{position:relative;inset:auto!important;width:auto!important;height:170px;aspect-ratio:auto!important;box-shadow:none;transform:none!important}
+ .h4-pics figure{position:relative;height:210px;aspect-ratio:auto!important;margin-top:0!important;box-shadow:none;transform:none!important}.h4-pics::before{display:none}
  .h4-txt{padding-bottom:30px}
  .h4-pics .p4,.h4-pics .p5{display:none}
  .h4-pics .p1{order:1}.h4-pics .p2{order:2}.h4-pics .p3{order:3}
@@ -406,9 +407,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
 <main id="top">
   <section class="hero4" id="hero">
     <div class="h4-pics" aria-hidden="true">
-      <figure class="p1" data-speed="-0.05"><img src="img/w-daraa.jpg" alt=""></figure>
-      <figure class="p2" data-speed="0.04"><img src="img/w-gown.jpg" alt=""></figure>
-      <figure class="p3" data-speed="-0.06"><img src="img/m-kandura.jpg" alt=""></figure>
+      <figure class="p1"><img src="img/w-daraa.jpg" alt=""><figcaption>Daraa</figcaption></figure>
+      <figure class="p2"><img src="img/w-gown.jpg" alt=""><figcaption>Couture</figcaption></figure>
+      <figure class="p3"><img src="img/m-kandura.jpg" alt=""><figcaption>Bisht</figcaption></figure>
       <figure class="p4" data-speed="0.05"><img src="img/p-bottle.jpg" alt=""></figure>
       <figure class="p5" data-speed="-0.03"><img src="img/k-girl.jpg" alt=""></figure>
     </div>
@@ -584,12 +585,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
         <figure class="rv wipe"><div class="ph"><img src="img/g-detail.jpg" alt="تفاصيل القطعة"></div><div class="cr"><b>التفاصيل</b><span class="it muted">The Detail</span></div></figure>
       </div>
       <div class="care" id="care">
-        <div class="ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9l9-5 9 5v8l-9 5-9-5z"/></svg>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 7h16l-2 12H6z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
-        </div>
-        <div class="big">MADE AS IT IS</div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 64 64" style="width:64px;height:64px"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9BE86"/><stop offset="1" stop-color="#9C7E47"/></linearGradient></defs><path d="M32 4l22 8v17c0 15-9.5 26-22 31C19.5 55 10 44 10 29V12z" fill="url(#sg)"/><path d="M32 10l16 6v13c0 11-7 19.5-16 23.5C23 48.5 16 40 16 29V16z" fill="none" stroke="#FBF6EE" stroke-width="1.4" opacity=".7"/><path d="M23 32l6.5 6.5L42 25" fill="none" stroke="#FBF6EE" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="big">ZAYY GUARANTEE</div>
         <h3>القطعة تطلع مثل ما هي بالضبط.</h3>
         <p>القصّة · اللون · الأزرار · التطريز · الخامة<br>إذا تغيّر أي تفصيل، نعيد الصورة مجاناً.</p>
       </div>
