@@ -379,7 +379,7 @@ body{padding-bottom:84px}}
 .final{contain:paint;background:var(--champ-pale);color:var(--ink);padding-block:clamp(80px,10vw,130px) 0;overflow:hidden}
 
 .final-pics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:calc(clamp(80px,10vw,130px) * -1) 0 clamp(50px,6vw,80px)}
-.final-pics img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.final-pics img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%}
 @media (max-width:700px){.final-pics{grid-template-columns:1fr 1fr}}
 .final-in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
 .final h2{max-width:16ch}
@@ -400,6 +400,7 @@ footer .by{font-family:var(--display);font-size:11px;letter-spacing:.24em;text-t
 footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;border-top:1px dashed var(--line)}
 @media (max-width:760px){footer .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.pre,.wipe.pre{transform:none!important;opacity:1!important;clip-path:none!important}}
+.spg-img img,.cat img,.ct img,.del .ph img,.band-img img,.kin-t img{object-position:50% 18%}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -612,7 +613,7 @@ footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;bo
     <div class="wrap">
       <div class="rv" style="margin-bottom:clamp(36px,5vw,60px)"><span class="kick">Why ZAYY</span><h2 style="margin-top:14px">لا ستوديو، لا موديل،<br><em>ولا مشوار.</em></h2><p class="muted" style="margin:14px 0 0">كل اللي تحتاجه صورة من جوالك، وانت بمحلك.</p></div>
       <div class="vs rv">
-        <div class="c old"><h3>THE OLD WAY · التصوير التقليدي</h3><ul><li>حجز ستوديو وإضاءة</li><li>موديل وميك أب وشعر</li><li>مصوّر وفريق كامل</li><li>أيام تنسيق وتصوير</li></ul><div class="tot"><span class="muted" style="font-size:15px;display:block">التكلفة</span>مئات الدنانير</div></div>
+        <div class="c old"><h3>THE OLD WAY · التصوير التقليدي</h3><ul><li>حجز ستوديو وإضاءة</li><li>موديل وميك أب وشعر</li><li>مصوّر وفريق كامل</li><li>أيام تنسيق وتصوير</li></ul><div class="tot"><span class="muted" style="font-size:15px;display:block">التكلفة</span><span id="trad">مئات الدنانير</span></div></div>
         <div class="c"><h3>THE ZAYY WAY · مع زي</h3><ul><li>صورة من جوالك</li><li>ترسلها على واتساب</li><li>بدون ما تطلع من محلك</li><li>جاهزة خلال 72 ساعة</li></ul><div class="tot">من <span class="n" data-p="unit">8</span> <span data-cur>د.ك</span> للقطعة</div></div>
       </div>
     </div>
@@ -732,6 +733,7 @@ footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;bo
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
   lb.addEventListener('keydown',function(e){if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur_i+1);if(e.key==='ArrowRight')show(cur_i-1)});
   /* currency + count */
+  var T={KWD:'مئات الدنانير',SAR:'آلاف الريالات',AED:'آلاف الدراهم',QAR:'آلاف الريالات',OMR:'مئات الريالات',USD:'آلاف الدولارات'};
   var C={KWD:{a:45,b:120,c:249,sv:15,r:25,ra:10,rb:25,x:2,unit:8,l:'د.ك'},SAR:{a:559,b:1489,c:3099,sv:188,r:299,ra:125,rb:309,x:25,unit:99,l:'ر.س'},AED:{a:549,b:1469,c:3049,sv:178,r:289,ra:122,rb:305,x:25,unit:98,l:'د.إ'},QAR:{a:539,b:1439,c:2999,sv:178,r:289,ra:120,rb:300,x:25,unit:96,l:'ر.ق'},USD:{a:149,b:395,c:819,sv:52,r:79,ra:33,rb:81,x:7,unit:26,l:'$'},OMR:{a:59,b:149,c:309,sv:28,r:29,ra:13,rb:31,x:2.5,unit:9.9,l:'ر.ع'}};
   function fmt(v,dec){return dec?v.toFixed(1):Math.round(v).toLocaleString('en-US')}
   function countTo(el,to){
@@ -741,7 +743,7 @@ footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;bo
     requestAnimationFrame(st);
   }
   var cur='KWD';
-  function setC(k,anim){cur=k;document.querySelectorAll('[data-p]').forEach(function(e){var v=C[k][e.getAttribute('data-p')];if(anim)countTo(e,v);else e.textContent=fmt(v,(v%1)!==0)});document.querySelectorAll('[data-cur]').forEach(function(e){e.textContent=C[k].l});document.querySelectorAll('#cur button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-c')===k?'true':'false')});try{localStorage.setItem('zayy-cur',k)}catch(e){}}
+  function setC(k,anim){cur=k;var tr=document.getElementById('trad');if(tr)tr.textContent=T[k];document.querySelectorAll('[data-p]').forEach(function(e){var v=C[k][e.getAttribute('data-p')];if(anim)countTo(e,v);else e.textContent=fmt(v,(v%1)!==0)});document.querySelectorAll('[data-cur]').forEach(function(e){e.textContent=C[k].l});document.querySelectorAll('#cur button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-c')===k?'true':'false')});try{localStorage.setItem('zayy-cur',k)}catch(e){}}
   document.querySelectorAll('#cur button').forEach(function(b){b.addEventListener('click',function(){setC(b.getAttribute('data-c'),true)})});
   try{var s=localStorage.getItem('zayy-cur');if(s&&C[s])setC(s,false)}catch(e){}
   /* copy */
