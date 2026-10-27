@@ -384,8 +384,13 @@ body{padding-bottom:84px}}
 .note{font-size:13px;min-height:1.2em}
 .giant{font-family:var(--display);font-weight:400;font-size:clamp(80px,15vw,230px);line-height:.85;letter-spacing:.02em;white-space:nowrap;margin-top:clamp(50px,6vw,90px);direction:ltr;display:flex;gap:.4em;width:max-content;color:var(--sand);will-change:transform}
 .giant span:nth-child(odd){color:var(--champ-hi)}.giant span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--champ)}
-footer{padding-block:34px;font-size:14px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+footer{padding-block:40px 34px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px 32px}
+footer .fl{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;font-size:14px;font-weight:400}
+footer .fl a{text-decoration:none;color:var(--ink);opacity:.75;transition:opacity .2s}footer .fl a:hover{opacity:1;color:var(--deep)}
+footer .by{font-family:var(--display);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--deep);direction:ltr;white-space:nowrap}
+footer .tl{grid-column:1/-1;text-align:center;font-size:13px;padding-top:16px;border-top:1px dashed var(--line)}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.pre,.wipe.pre{transform:none!important;opacity:1!important;clip-path:none!important}}
 </style>
 
@@ -682,8 +687,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
 <footer>
   <div class="wrap">
     <a class="logo" href="#top" aria-label="ZAYY زي"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#zmark"/></svg><span class="w" style="font-size:19px">ZAYY</span><span class="a" style="font-size:16px">زي</span></a>
-    <span>ستوديو تصوير أزياء بالذكاء الاصطناعي · <a href="/kuwait">الكويت</a> · <a href="/saudi-arabia">السعودية</a> · <a href="/uae">الإمارات</a> · <a href="/qatar">قطر</a> · <a href="/oman">عُمان</a> · <a href="/abaya-photography">تصوير عبايات</a> · <a href="/perfume-photography">تصوير عطور</a> · <a href="/en">English</a></span>
-    <span class="it" style="font-size:14px">A studio by Akkad Pictures</span>
+    <nav class="fl" aria-label="روابط"><a href="/kuwait">الكويت</a><a href="/saudi-arabia">السعودية</a><a href="/uae">الإمارات</a><a href="/qatar">قطر</a><a href="/oman">عُمان</a><a href="/abaya-photography">تصوير عبايات</a><a href="/perfume-photography">تصوير عطور</a><a href="/en">English</a></nav>
+    <span class="by">A studio by Akkad Ads</span>
+    <div class="tl">ستوديو تصوير أزياء ومنتجات بالذكاء الاصطناعي · الخليج</div>
   </div>
 </footer>
 
